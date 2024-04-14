@@ -2,19 +2,15 @@ package mx.unam.fi.tipest.ui.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -42,7 +38,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -116,7 +111,7 @@ fun ContentHomeView(it: PaddingValues){
                 Titulos(texto = "Áreas de estudio")
             }
             item{
-                areas(images = imagesListAreas, titles = titlesListAreas)
+                Areas(images = imagesListAreas, titles = titlesListAreas)
             }
 
 
@@ -210,14 +205,14 @@ fun LazyImages(images: List<Int>, titles:List<String>){
 }
 
 @Composable
-fun areas(images: List<Int>, titles:List<String>){
+fun Areas(images: List<Int>, titles:List<String>){
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        images.forEachIndexed(){ index, imageResoruce ->
+        images.forEachIndexed{ index, imageResoruce ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
@@ -247,7 +242,6 @@ fun areas(images: List<Int>, titles:List<String>){
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomBar() {
     Row(
