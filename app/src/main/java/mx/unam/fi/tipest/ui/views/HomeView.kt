@@ -55,16 +55,19 @@ import mx.unam.fi.tipest.ui.list.titlesListAreas
 import mx.unam.fi.tipest.ui.list.titlesListComida
 import mx.unam.fi.tipest.ui.list.titlesListLugares
 import android.graphics.Color.parseColor
+import androidx.compose.material.icons.filled.Info
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 
 @Composable
-fun HomeView(){
+fun HomeView(navController: NavController){
     Scaffold(
         topBar = {
             TopBar()
         },
         bottomBar = {
-            BottomBar()
+            BottomBar(navController)
         }
     ) {
         ContentHomeView(it = it)
@@ -87,7 +90,7 @@ fun ContentHomeView(it: PaddingValues){
                         contentDescription = "Rectoría",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 20.dp, end = 20.dp)
+                            .padding(start = 20.dp, end = 20.dp, top = 20.dp)
                             .clip(RoundedCornerShape(16.dp)),
                         contentScale = ContentScale.Crop
                     )
@@ -124,7 +127,7 @@ fun ContentHomeView(it: PaddingValues){
 
 @Composable
 fun MainTitle(title: String){
-    Text(text= title, color = Color.Black, fontWeight = FontWeight.ExtraBold)
+    Text(text= title, color = Color.White, fontWeight = FontWeight.ExtraBold)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -138,7 +141,8 @@ fun TopBar(){
             ) {
                 Icon(
                     imageVector = Icons.Filled.LocationOn,
-                    contentDescription = "Mapa"
+                    contentDescription = "Mapa",
+                    tint = Color.White
                 )
             }
         },
@@ -146,14 +150,14 @@ fun TopBar(){
             IconButton(
                 onClick = { /* Acción cuando se hace clic en el icono de búsqueda */ }
             ) {
-                Icon(
-                    imageVector = Icons.Filled.Search,
+                /*Icon(
+                    imageVector = Icons.Filled.,
                     contentDescription = "Buscar"
-                )
+                )*/
             }
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = Color.White
+            containerColor = Color(parseColor("#3b8132"))
         )
     )
 }
@@ -243,12 +247,12 @@ fun Areas(images: List<Int>, titles:List<String>){
 }
 
 @Composable
-fun BottomBar() {
+fun BottomBar(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .height(85 .dp)
-            .background(Color(parseColor("#B0f2c2"))),
+            .background(Color(parseColor("#CCE7C9"))),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
 
@@ -256,28 +260,32 @@ fun BottomBar() {
         IconWithText(
             icon = Icons.Filled.Home,
             text = "Inicio",
-            onClick = { /* Acción cuando se hace clic en el icono del mapa */ }
+            onClick = {},
+            color = Color(0xFF287233)
         )
         IconWithText(
             icon = Icons.Filled.Phone,
             text = "Directorio",
-            onClick = { /* Acción cuando se hace clic en el icono de búsqueda */ }
+            onClick = { navController.navigate("DirectorioView")},
+            color = Color.DarkGray
         )
         IconWithText(
             icon = Icons.Filled.AccountCircle,
             text = "Perfil",
-            onClick = { /* Acción cuando se hace clic en el icono de perfil */ }
+            onClick = {navController.navigate("PerfilView")},
+            color = Color.DarkGray
         )
         IconWithText(
-            icon = Icons.Filled.Favorite,
-            text = "Favoritos",
-            onClick = { /* Acción cuando se hace clic en el icono de favoritos */ }
+            icon = Icons.Filled.Info,
+            text = "PumaBus",
+            onClick = {navController.navigate("PumabusView")},
+            color = Color.DarkGray
         )
     }
 }
 
 @Composable
-fun IconWithText(icon: ImageVector, text: String, onClick: () -> Unit) {
+fun IconWithText(icon: ImageVector, text: String, onClick: () -> Unit, color: Color) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -285,12 +293,14 @@ fun IconWithText(icon: ImageVector, text: String, onClick: () -> Unit) {
         IconButton(onClick = onClick) {
             Icon(
                 imageVector = icon,
-                contentDescription = text
+                contentDescription = text,
+                tint = color
             )
         }
         Text(
             text = text,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.bodyMedium,
+            color = color
         )
     }
 }
@@ -300,5 +310,6 @@ fun IconWithText(icon: ImageVector, text: String, onClick: () -> Unit) {
 @Preview
 @Composable
 fun HomeViewPreview(){
-    HomeView()
+    val navController = rememberNavController()
+    HomeView(navController)
 }
