@@ -1,6 +1,5 @@
 package mx.unam.fi.tipest.ui.views
 
-import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
