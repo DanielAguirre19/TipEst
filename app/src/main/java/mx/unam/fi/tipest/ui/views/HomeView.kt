@@ -38,19 +38,15 @@ import androidx.compose.ui.unit.sp
 import mx.unam.fi.tipest.R
 
 val imagesListComida = listOf(
-    R.drawable.rectoria,
-    R.drawable.rectoria,
-    R.drawable.rectoria,
-    R.drawable.rectoria,
-    R.drawable.rectoria,
+    R.drawable.cafe_fac_arq,
+    R.drawable.cafe_fac_ciencias,
+    R.drawable.cafe_fac_med,
 )
 
 val imagesListLugares = listOf(
-    R.drawable.rectoria,
-    R.drawable.rectoria,
-    R.drawable.rectoria,
-    R.drawable.rectoria,
-    R.drawable.rectoria,
+    R.drawable.estadio,
+    R.drawable.alberca,
+    R.drawable.muac,
 )
 
 @Composable
