@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
+import mx.unam.fi.tipest.ui.list.AppConstants
 import mx.unam.fi.tipest.ui.views.MainTitle
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -20,11 +21,14 @@ fun TopBarSecundario(navController: NavController, title: String){
         title = { MainTitle(title = title) },
         navigationIcon = {
             IconButton(
-                onClick = {navController.popBackStack() }
+                onClick = {
+                    navController.popBackStack()
+                    AppConstants.selectedRouteIndex = -1
+                }
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Mapa",
+                    contentDescription = "Flecha",
                      tint = Color.White
                 )
             }

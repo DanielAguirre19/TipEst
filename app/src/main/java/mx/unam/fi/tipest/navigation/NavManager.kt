@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import mx.unam.fi.tipest.ui.views.DirectorioView
 import mx.unam.fi.tipest.ui.views.HomeView
+import mx.unam.fi.tipest.ui.views.ImgPumaBusView
 import mx.unam.fi.tipest.ui.views.PefilView
 import mx.unam.fi.tipest.ui.views.PumaBusView
 
@@ -24,6 +25,10 @@ fun NavManager(){
         }
         composable("PumabusView") {
             PumaBusView(navController)
+        }
+
+        composable("ImgPumabusView") {
+            ImgPumaBusView(navController)
         }
     }
 }

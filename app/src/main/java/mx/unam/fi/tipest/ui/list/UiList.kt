@@ -39,3 +39,4 @@ val titlesListAreas = listOf(
     "Área 3",
     "Área 4",
 )
+
