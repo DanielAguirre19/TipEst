@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tel_auxilio">55 5616 1922</string>
+    <string name="tel_med">55 5622 0140</string>
+    <string name="tel_salud">55 5622 0127</string>
+    <string name="tel_bomberos">55 5616 1560</string>
+</resources>
