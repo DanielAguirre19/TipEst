@@ -45,7 +45,7 @@ fun ContentDirView(it: PaddingValues){
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.rectoria2),
-                        contentDescription = "Hola",
+                        contentDescription = "Rectoría",
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 20.dp, end = 20.dp)
