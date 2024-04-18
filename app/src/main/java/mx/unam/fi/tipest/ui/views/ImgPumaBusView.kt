@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,18 +40,25 @@ fun ImgPumaBusView(navController: NavController){
 }
 
 @Composable
-fun ContentImgPumaView(it: PaddingValues){
+fun ContentImgPumaView(it: PaddingValues) {
     val indexImg = AppConstants.selectedRouteIndex - 1
-
-    Image(
-        painter = painterResource(id = imagesRutas.getOrNull(indexImg) ?: R.drawable.muac),
-        contentDescription = "Rutas",
+    Surface(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 20.dp, end = 20.dp, top = 73.dp)
-            .clip(RoundedCornerShape(16.dp)),
-        contentScale = ContentScale.Crop
-    )
+            .clip(RoundedCornerShape(16.dp))
+            .padding(4.dp),
+        color = Color.White,
+        shadowElevation = 30.dp,
+        shape = RoundedCornerShape(16.dp) // Forma del surface
+    ) {
+        Image(
+            painter = painterResource(id = imagesRutas.getOrNull(indexImg) ?: R.drawable.muac),
+            contentDescription = "Rutas",
+            modifier = Modifier.fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+    }
 }
 
 

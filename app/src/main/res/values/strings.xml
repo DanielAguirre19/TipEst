@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TipEst</string>
+    <string name="auxilio">Auxilio UNAM</string>
+    <string name="med">Servicios Médicos</string>
+    <string name="sist">Sistema de Orientación a la Salud</string>
+    <string name="bomberos">Bomberos</string>
 </resources>
