@@ -14,7 +14,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Divider
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,6 +27,7 @@ import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -33,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import mx.unam.fi.tipest.R
+import mx.unam.fi.tipest.ui.components.FloatButton
 import mx.unam.fi.tipest.ui.components.TopBarSecundario
 
 @Composable
@@ -78,7 +84,7 @@ fun ContentPerfilView(it: PaddingValues){
                         textAlign = TextAlign.Center,
                     )
 
-                    Spacer(modifier = Modifier.height(60.dp))
+                    Spacer(modifier = Modifier.height(70.dp))
 
                     //CORREO
                     Row(
@@ -132,23 +138,22 @@ fun ContentPerfilView(it: PaddingValues){
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column {
-                            Image(
-                                painter = painterResource(id = R.drawable.mapa),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .size(35.dp)
-                                    .fillMaxWidth()
-                            )
-                        }
-                        Column {
-                            Text(
-                                text = "  Facultad de Ingeniería  ",
-                                fontSize = 16.sp
-                            )
-                        }
+                        Image(
+                            painter = painterResource(id = R.drawable.mapa),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(35.dp)
+                                .fillMaxWidth()
+                        )
+                        Text(
+                            text = "  Facultad de Ingeniería  ",
+                            fontSize = 16.sp
+                        )
                     }
 
+                    Spacer(modifier = Modifier.height(80.dp))
+
+                    FloatButton {}
                 }
             }
         }
