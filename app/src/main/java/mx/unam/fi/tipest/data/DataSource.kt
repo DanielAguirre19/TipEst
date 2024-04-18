@@ -3,7 +3,7 @@ package mx.unam.fi.tipest.data
 import mx.unam.fi.tipest.R
 import mx.unam.fi.tipest.model.Lugar
 
-class DataSource() {
+class DataSource {
 
     fun LoadLugares():List<Lugar>{
         return listOf<Lugar>(

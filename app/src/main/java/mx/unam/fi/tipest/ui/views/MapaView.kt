@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -27,7 +27,6 @@ import androidx.compose.ui.Alignment
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -60,14 +59,14 @@ fun MapaView(navController: NavController){
 
 @Composable
 fun ContentMapaView(it: PaddingValues) {
-    val selectedNombreIndex = remember { mutableStateOf(0) }
+    val selectedNombreIndex = remember { mutableIntStateOf(0) }
     val dropdownExpanded = remember { mutableStateOf(false) }
 
-    val FI = LatLng(19.33120996609985, -99.18396542264932)
+    val coordFI = LatLng(19.33120996609985, -99.18396542264932)
 
 
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(FI, 16f)
+        position = CameraPosition.fromLatLngZoom(coordFI, 16f)
     }
 
     Column(Modifier.fillMaxSize()) {
@@ -75,7 +74,7 @@ fun ContentMapaView(it: PaddingValues) {
         Spacer(modifier = Modifier.size(70.dp))
         Box(modifier = Modifier.fillMaxWidth().background(Color(0xFFB1F49D)), contentAlignment = Alignment.Center) {
             TextButton(onClick = { dropdownExpanded.value = !dropdownExpanded.value }) {
-                Text(nombresFac[selectedNombreIndex.value],
+                Text(nombresFac[selectedNombreIndex.intValue],
                     color = Color.Black,
                     style = MaterialTheme.typography.headlineMedium
                 )
@@ -96,32 +95,22 @@ fun ContentMapaView(it: PaddingValues) {
                     DropdownMenuItem(
                         text = {Text(text =  nombre)},
                         onClick = {
-                            selectedNombreIndex.value = index
+                            selectedNombreIndex.intValue = index
                             dropdownExpanded.value = false
                         }
                     )
                 }
             }
         }
-
-        /*// Texto debajo del DropdownMenu
-        Text(
-            modifier = Modifier.padding(16.dp),
-            text = "Opción seleccionada: ${nombresFac[selectedNombreIndex.value]}",
-            style = MaterialTheme.typography.bodyMedium
-        )*/
-
         GoogleMap(
             cameraPositionState = cameraPositionState,
             properties = MapProperties(isBuildingEnabled = true)
         ) {
-            coordenadas.forEachIndexed { index, coordenada ->
-                Marker(
-                    state = MarkerState(position = coordenadas[selectedNombreIndex.value]),
-                    title = nombresFac.getOrNull(selectedNombreIndex.value) ?: "Marcador",
-                    snippet = "Coordenadas: ${coordenadas[selectedNombreIndex.value].latitude}, ${coordenadas[selectedNombreIndex.value].longitude}"
-                )
-            }
+            Marker(
+                state = MarkerState(position = coordenadas[selectedNombreIndex.intValue]),
+                title = nombresFac.getOrNull(selectedNombreIndex.intValue) ?: "Marcador",
+                snippet = "Coordenadas: ${coordenadas[selectedNombreIndex.intValue].latitude}, ${coordenadas[selectedNombreIndex.intValue].longitude}"
+            )
         }
     }
 }

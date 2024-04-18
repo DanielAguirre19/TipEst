@@ -52,8 +52,8 @@ android {
 dependencies {
 
     //Navigation
-    val nav_version = "2.5.3"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    val nav_version = "2.7.7"//"2.5.3"
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     //Google maps
     implementation ("com.google.maps.android:maps-compose:2.11.4")
