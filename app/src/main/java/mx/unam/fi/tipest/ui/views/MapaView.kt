@@ -5,9 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+
 
 import androidx.compose.ui.Modifier
 
@@ -20,8 +18,7 @@ import com.google.android.gms.maps.model.LatLng
 
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
-import com.google.maps.android.compose.MapType
-import com.google.maps.android.compose.MapUiSettings
+
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
@@ -41,31 +38,6 @@ fun MapaView(navController: NavController){
 }
 
 @Composable
-/*fun ContentMapaView(it: PaddingValues){
-    Column(
-        modifier = Modifier.padding(it)
-    ) {
-        LazyColumn {
-            item {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.rectoria2),
-                        contentDescription = "Hola",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 20.dp, end = 20.dp)
-                            .clip(RoundedCornerShape(16.dp)),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-            }
-        }
-    }
-}*/
-
 fun ContentMapaView(it: PaddingValues){
     val FI = LatLng(19.33120996609985, -99.18396542264932)
 
