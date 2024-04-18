@@ -30,7 +30,7 @@ import mx.unam.fi.tipest.ui.components.TopBarSecundario
 fun MapaView(navController: NavController){
     Scaffold(
         topBar = {
-            TopBarSecundario(navController, title = "Directorio")
+            TopBarSecundario(navController, title = "Mapa de Ciudad Universitaria")
         },
     ) {
         ContentMapaView(it = it)
