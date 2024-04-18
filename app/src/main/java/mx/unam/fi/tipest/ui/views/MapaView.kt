@@ -49,32 +49,12 @@ import mx.unam.fi.tipest.ui.components.TopBarSecundario
 
 @Composable
 fun MapaView(navController: NavController){
-    val nombres = remember { nombresFac.toList() }
-    val selectedNombreIndex = remember { mutableStateOf(0) }
-    val dropdownExpanded = remember { mutableStateOf(false) }
-
     Scaffold(
         topBar = {
             TopBarSecundario(navController, title = "Mapa de Ciudad Universitaria")
         },
     ) {
-        Column(Modifier.fillMaxSize()){
-            DropdownMenu(
-                expanded = dropdownExpanded.value,
-                onDismissRequest = { dropdownExpanded.value = false }
-            ){
-                nombres.forEachIndexed { index, nombre ->
-                    DropdownMenuItem(text = { "TODO" }, onClick = { /*TODO*/ })
-                    /*DropdownMenuItem( onClick = {
-                        selectedNombreIndex.value = index
-                        dropdownExpanded.value = false
-                    }){
-                        Text(text = nombre)
-                    }*/
-                }
-            }
-            ContentMapaView(it = it)
-        }
+        ContentMapaView(it = it)
     }
 }
 
@@ -95,16 +75,9 @@ fun ContentMapaView(it: PaddingValues) {
         Spacer(modifier = Modifier.size(70.dp))
         Box(modifier = Modifier.fillMaxWidth().background(Color(0xFFB1F49D)), contentAlignment = Alignment.Center) {
             TextButton(onClick = { dropdownExpanded.value = !dropdownExpanded.value }) {
-                //Text(nombresFac[selectedNombreIndex.value])
-                Text(
-                    if (selectedNombreIndex.value == -1) {
-                        "Selecciona una opción"
-                    } else {
-                        nombresFac[selectedNombreIndex.value]
-                    },
+                Text(nombresFac[selectedNombreIndex.value],
                     color = Color.Black,
                     style = MaterialTheme.typography.headlineMedium
-
                 )
                 Icon(
                     imageVector = Icons.Filled.KeyboardArrowDown,
