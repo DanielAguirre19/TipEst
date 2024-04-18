@@ -4,19 +4,19 @@ import androidx.compose.ui.graphics.Color
 import mx.unam.fi.tipest.R
 
 val colorsList = listOf(
-    Color.Red,
-    Color.Red,
-    Color.Green,
-    Color.Yellow,
-    Color.Cyan,
-    Color.Magenta,
-    Color.Gray,
-    Color.Black,
-    Color.White,
-    Color.Magenta,
-    Color.Gray,
-    Color.Black,
-    Color.White,
+    Color(0xFF35AF43),
+    Color(0xFFE9F917),
+    Color(0xFF1A690C),
+    Color(0xFF5D120C),
+    Color(0xFF1DC9DB),
+    Color(0xFFBF2715),
+    Color(0xFF9B8E15),
+    Color(0xFF0E3B76),
+    Color(0xFFE717A3),
+    Color(0xFF000000),
+    Color(0xFF860A96),
+    Color(0xFFE49DEA),
+    Color(0xFF00FF0E ),
 )
 
 val routes = listOf(

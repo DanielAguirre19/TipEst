@@ -45,7 +45,8 @@ fun ContentImgPumaView(it: PaddingValues){
         painter = painterResource(id = imagesRutas.getOrNull(indexImg) ?: R.drawable.muac),
         contentDescription = "Rutas",
         modifier = Modifier
-            .padding(start = 20.dp, end = 20.dp, top = 85.dp)
+            .fillMaxWidth()
+            .padding(start = 20.dp, end = 20.dp, top = 73.dp)
             .clip(RoundedCornerShape(16.dp)),
         contentScale = ContentScale.Crop
     )
