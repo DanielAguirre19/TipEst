@@ -105,7 +105,7 @@ fun TipEstTheme(
  */
 
 @Composable
-fun AppTheme(
+fun TipEstTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
