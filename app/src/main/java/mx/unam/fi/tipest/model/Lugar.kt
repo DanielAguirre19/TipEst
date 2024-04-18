@@ -7,5 +7,4 @@ data class Lugar(
     @StringRes val stringResourceId: Int,
     @StringRes val telefonoResourceId: Int,
     @DrawableRes val drawableResourceId: Int
-
 )

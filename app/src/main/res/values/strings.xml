@@ -4,4 +4,5 @@
     <string name="med">Servicios Médicos</string>
     <string name="sist">Sistema de Orientación a la Salud</string>
     <string name="bomberos">Bomberos</string>
+    <string name="google_map_api_key">AIzaSyBEGvNEsRj71uHRsCgvAD9rpa1BrXY3KIA</string>
 </resources>

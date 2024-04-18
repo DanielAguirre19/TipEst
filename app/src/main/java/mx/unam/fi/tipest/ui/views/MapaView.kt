@@ -1,31 +1,39 @@
 package mx.unam.fi.tipest.ui.views
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import mx.unam.fi.tipest.R
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.MapProperties
+import com.google.maps.android.compose.MapType
+import com.google.maps.android.compose.MapUiSettings
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
+import mx.unam.fi.tipest.maps.coordenadas
+import mx.unam.fi.tipest.maps.nombresFac
 import mx.unam.fi.tipest.ui.components.TopBarSecundario
 
 @Composable
 fun MapaView(navController: NavController){
     Scaffold(
         topBar = {
-            TopBarSecundario(navController, title = "Mapa CU")
+            TopBarSecundario(navController, title = "Directorio")
         },
     ) {
         ContentMapaView(it = it)
@@ -33,7 +41,7 @@ fun MapaView(navController: NavController){
 }
 
 @Composable
-fun ContentMapaView(it: PaddingValues){
+/*fun ContentMapaView(it: PaddingValues){
     Column(
         modifier = Modifier.padding(it)
     ) {
@@ -56,12 +64,34 @@ fun ContentMapaView(it: PaddingValues){
             }
         }
     }
+}*/
+
+fun ContentMapaView(it: PaddingValues){
+    val FI = LatLng(19.33120996609985, -99.18396542264932)
+
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(FI, 16f)
+    }
+    GoogleMap(
+        modifier = Modifier.fillMaxSize(),
+        cameraPositionState = cameraPositionState,
+        properties = MapProperties(isBuildingEnabled = true)
+    ) {
+        coordenadas.forEachIndexed { index, coordenada ->
+            Marker(
+                state = MarkerState(position = coordenada),
+                title = nombresFac.getOrNull(index) ?: "Marcador $index",
+                snippet = "Coordenadas: ${coordenada.latitude}, ${coordenada.longitude}",
+            )
+        }
+    }
 }
 
 
 @Preview
 @Composable
-fun MapaViewPreview(){
+fun MapViewPreview(){
     val navController = rememberNavController()
-    DirectorioView(navController)
+    MapaView(navController)
 }
