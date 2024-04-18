@@ -62,7 +62,7 @@ import androidx.navigation.compose.rememberNavController
 fun HomeView(navController: NavController){
     Scaffold(
         topBar = {
-            TopBar()
+            TopBar(navController)
         },
         bottomBar = {
             BottomBar(navController)
@@ -130,12 +130,12 @@ fun MainTitle(title: String){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(){
+fun TopBar(navController: NavController){
     CenterAlignedTopAppBar(
         title = { MainTitle(title = stringResource(id = R.string.app_name)) },
         navigationIcon = {
             IconButton(
-                onClick = { /* Acción cuando se hace clic en el icono del mapa */ }
+                onClick = { navController.navigate("MapaView")}
             ) {
                 Icon(
                     imageVector = Icons.Filled.LocationOn,
@@ -144,16 +144,7 @@ fun TopBar(){
                 )
             }
         },
-        actions = {
-            IconButton(
-                onClick = { /* Acción cuando se hace clic en el icono de búsqueda */ }
-            ) {
-                /*Icon(
-                    imageVector = Icons.Filled.,
-                    contentDescription = "Buscar"
-                )*/
-            }
-        },
+
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = Color(parseColor("#3b8132"))
         )
